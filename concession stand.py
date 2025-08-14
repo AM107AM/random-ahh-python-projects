@@ -48,12 +48,6 @@ while True:
 
         if int(bought_item) not in range(len(snacks_list) + 1):
             print(f"Please select a number from 1 to {len(snacks_list)}: ")
-        elif (
-            int(bought_item) == 3
-        ):  # another condition so that the grammer is right with chips
-            print(f"{snacks_list[int(bought_item) - 1]} have been added")
-            cart.append(snacks_list[int(bought_item) - 1])
-            total += snacks.get(snacks_list[int(bought_item) - 1])
         else:
             print(f"{snacks_list[int(bought_item) - 1]} has been added")
             cart.append(snacks_list[int(bought_item) - 1])
