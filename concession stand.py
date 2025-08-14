@@ -1,6 +1,7 @@
 print("-------- Vendor mode --------")
 snacks = {}
 snacks_list = list(snacks)
+price_list = []
 x = 1  # just a counter during during listing the items
 y = 1  # just a counter during inputing the items in vendor mode
 while True:
@@ -16,6 +17,7 @@ while True:
             price = input("Please select a valid price: ")
     snacks.update({item: price})
     snacks_list = list(snacks)
+    price_list = list(snacks.values())
     y += 1
 
 while True:
@@ -57,9 +59,14 @@ while True:
             cart.append(snacks_list[int(bought_item) - 1])
             total += snacks.get(snacks_list[int(bought_item) - 1])
     bought_set = set(cart)
-
+    #                    idx 0     idx1        idx2      idx3
+    # example of cart: ["popcorn", "Popcorn", "Candy", SugarCan juice]
+    # the set of cart : {"candy", "Popcorn", "Sugarcane juice"}
     print("---------your items----------")
     for snack in bought_set:
-        print(f"{cart.count(snack)} x {snack}")
+        # ex:      2                 x Popcorn =             2    x                3.50                      $ =              7.00
+        print(
+            f"{cart.count(snack)} x {snack} = {cart.count(snack)} x {(price_list[snacks_list.index(snack)])} $ = {(price_list[snacks_list.index(snack)] * cart.count(snack))  } $"
+        )
     print("-----------------------------")
     print(f"your total is {total} $")
